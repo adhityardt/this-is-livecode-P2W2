@@ -27,7 +27,9 @@ export default {
       formData.append('file', this.image)
       axios.post('http://35.197.135.159/image', formData, {
         'Content-Type': 'multipart/form-data',
-        authorization: localStorage.getItem('authorization')
+        headers: {
+          authorization: localStorage.getItem('authorization')
+        }
       })
       .then(response => {
         console.log('upload image sucess')

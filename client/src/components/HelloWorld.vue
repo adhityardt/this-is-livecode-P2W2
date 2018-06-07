@@ -7,8 +7,25 @@
 <script>
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
+  data (){
+    return {
+
+    }
+  },
+  methods: {
+    getImage: function () {
+      axios.get('http://35.197.135.159/image', {
+        headers: {
+          authorization: localStorage.getItem('authorization')
+        }
+      })
+      .then(response => {
+        this.listPhoto = response.data.result
+      })
+      .catch(err => {
+        this.error = err
+      })
+    }
   }
 }
 </script>
